@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  $('#btsubmit').click(()=>{
+    $.ajax({
+      url:"http://"+window.location.host+""+"/admin"
+      ,method:"post"
+      ,data:{
+        u:$("#username").val(),
+        p:$("#password").val()
+      }
+      ,success:(data)=>{
+        if(data === "success"){
+          window.location.href = "http://"+window.location.host+""+"/admin/dashboard"
+        }else{
+          alert("not authenticated")
+        }
+      }
+      ,error:(err)=>{
+          alert("server error")
+      }
+    })
+  })
+</script>
