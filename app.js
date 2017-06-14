@@ -20,10 +20,8 @@ app.use(cookieSession({
 
 app.use(express.static('public'));
 
-app.use("/api/log",require("./controllers/api/log.js"));
-app.use("/register/lecturer",require("./controllers/register.js"));
-app.use("/register/student",require("./controllers/register.js"));
-app.use("/admin",require("./controllers/admin/main.js"));
-
-
-app.use("/",require("./controllers/main.js"));
+app.use("/log",require("./controllers/log.js"));
+app.use("/lecturer",require("./controllers/lect.js"));
+app.use("/student",require("./controllers/device.js"));
+app.use("/admin",require("./controllers/admin.js"));
+app.use("/",require("./controllers/landing.js"));

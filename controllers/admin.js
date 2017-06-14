@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var subjects = require("../../models/subjects.js")
-var admins = require("../../models/admins.js")
+var subjects = require("../models/subjects.js")
+var admins = require("../models/admins.js")
 
 router.use("/dashboard",(req,resp,next)=>{
   console.log(req.session)
@@ -12,7 +12,7 @@ router.use("/dashboard",(req,resp,next)=>{
 })
 
 router.get("/", (req,resp)=>{
-  resp.render("login.ejs",{title:"Admin Login"})
+  resp.render("admin/login.ejs",{title:"Admin Login"})
 }).post("/",(req,resp)=>{
    id = req.body.u ;
    pass = req.body.p;
