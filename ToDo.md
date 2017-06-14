@@ -22,7 +22,7 @@
 
 ## Served Pages
 - [x] beacons logging pages   
-- [X] Admin logging Page      
+- [x] Admin logging Page      
 - [ ] Total Admin Tools      
 - [ ] Track Admin Tools      
 - [ ] lecturer Login page    

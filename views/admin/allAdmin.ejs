@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <%include ../skel/header %>
+  <style media="screen">
+    .panel{
+      height: 550px;
+    }
+    .data-view{
+      height: 200px;
+      overflow: auto;
+    }
+    .fixed-control-height{
+      height: 220px;
+    }
+  </style>
+  </head>
+  <body style="padding:5px">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Edit Track Adminstrators
+                <br/><small>This is section to add/delete admins to specific tracks</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                  <div class="data-view col-lg-12">
+                    <table class="table trackAdminList">
+                      <tr>
+                        <td>Ahmed Essam</td>
+                        <td>Open source</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger btRemoveTrackAdmin" data-trackAdmin-name="ahmed essam" data-track-name="open source">
+                            <span class="glyphicon glyphicon-remove">
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-lg-12 data-control">
+                    <div class="fixed-control-height">
+                      <div class="form-group">
+                        <label for="username">Admin UserName</label>
+                        <input value="" type="text" id="TrackAdminUsername" class="form-control" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Admin password</label>
+                        <input value="" type="password" id="TrackAdminPass" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="track-list">Select track:</label>
+                        <select class="form-control" id="TrackAdminTracks">
+                          <option>Open Source</option>
+                          <option>System Admin</option>
+                          <option>Java</option>
+                          <option>Mobile</option>
+                        </select>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-warnning" id="btAddTrackAdmin" name="button">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Edit Total Adminstrators
+                <br/><small>This is section to add/delete Total Admin</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                  <div class="data-view col-lg-12">
+                    <table class="table" id="totalAdminList">
+                      <tr>
+                        <td>Ahmed Essam</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger btRemoveTotalAdmin" data-totalAdmin-name="ahmed essam">
+                            <span class="glyphicon glyphicon-remove">
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-lg-12 data-control">
+                    <div class="fixed-control-height">
+                      <div class="form-group">
+                        <label for="username">Admin UserName</label>
+                        <input value="" type="text" id="TotalAdminName" class="form-control" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Admin password</label>
+                        <input value="" type="password" id="TotalAdminPass" class="form-control">
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-warnning btAddTotalAdmin" name="button">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Edit Tracks
+                <br/><small>This is section to add/delete Tracks</small>
+              </div>
+              <div class="panel-body">
+                <div class="data-view col-lg-12">
+                  <table class="table trackList">
+                    <tr>
+                      <td>Open Source</td>
+                      <td>
+                        <button class="btn btn-sm btn-danger btRemoveTrack" data-trackName="open source">
+                          <span class="glyphicon glyphicon-remove">
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-lg-12 data-control">
+                  <div class="fixed-control-height">
+                    <div class="form-group">
+                      <label for="track">Add Track</label>
+                      <input value="" type="text" id="trackName" class="form-control" placeholder="Username">
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-warnning btAddTrack" name="button">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Edit Rooms
+                <br/><small>This is section to add/delete Rooms and active devices</small>
+              </div>
+              <div class="panel-body">
+                <div class="data-view col-lg-12" id="rooms-list">
+                  <p>Room 1 <span class="glyphicon glyphicon-remove btRemoveRoom" data-roomName="room 1"></span><br/>
+                    <span class="label label-success" data-deviceName="device 1" data-roomName="room 1">Device 1</span>
+                    <span class="label label-success" data-deviceName="device 2" data-roomName="room 1">Device 2</span>
+                    <span class="label label-success" data-deviceName="device 3" data-roomName="room 1">Device 3</span>
+                    <span class="label label-success" data-deviceName="device 4" data-roomName="room 1">Device 4</span>
+                  </p>
+                </div>
+                <div class="data-control col-lg-12">
+                  <div class="fixed-control-height">
+                    <div class="form-group">
+                      <label for="track">Add Room</label>
+                      <input value="" type="text" id="roomName"  class="form-control" placeholder="Room Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="track">Add Device</label>
+                      <input value="" type="text" id="roomDevice" class="form-control" placeholder="Room Device">
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-warnning btAddRoomDevice" name="button">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success" style="height:200px">
+              <div class="panel-heading">
+                Edit My Passowrd
+                <br/><small>This is section to set your password</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="track">Change Password</label>
+                      <input value="" type="text" id="newPassword" class="form-control" placeholder="Enter New Password">
+                    </div>
+                  </div>
+                <div class="col-lg-12">
+                  <button type="button" class="btn btn-warnning btUpdatePassword" name="button">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <%include ../skel/scripts %>
+    <%include ../src/scripts/allAdmin %>
+  </body>
+</html>

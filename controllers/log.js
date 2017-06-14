@@ -3,7 +3,8 @@ var router = express.Router();
 var mongoose=require("mongoose");
 var logs = require("../models/logs.js")
 
-// to remove error : Mongoose: mpromise (mongoose's default promise library) is deprecated
+// to remove error : Mongoose: mpromise (mongoose's
+// default promise library) is deprecated
 mongoose.Promise = global.Promise;
 
 module.exports = router.get("/:device/:rssi/:gateway",(req,resp)=>{
