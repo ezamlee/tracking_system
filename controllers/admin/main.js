@@ -5,7 +5,7 @@ var admins = require("../../models/admins.js")
 
 router.use("/dashboard",(req,resp,next)=>{
   console.log(req.session)
-  if(req.session.username == undefined || req.session.logged == false){
+  if(req.session.username == undefined || req.session.logged === false || req.session.userType === "Admin"){
     resp.send('not authenticated')
   }
   else next()
@@ -13,20 +13,6 @@ router.use("/dashboard",(req,resp,next)=>{
 
 router.get("/", (req,resp)=>{
   resp.render("login.ejs",{title:"Admin Login"})
-}).get("/subject/add/:track/:code/:name/:cTime/:tTime",(req,resp)=>{
-  new subjects({
-    track:req.params.track,
-    code:req.params.code,
-    name:req.params.name,
-    cTime:req.params.cTime,
-    tTime:req.params.tTime
-  }).save((err,data)=>{
-    if(err){
-      resp.send("failed")
-    }else {
-      resp.send("success");
-    }
-  })
 }).post("/",(req,resp)=>{
    id = req.body.u ;
    pass = req.body.p;
@@ -35,6 +21,8 @@ router.get("/", (req,resp)=>{
    }else if (data.length > 0 && data[0].username === id && data[0].password === pass){
        req.session.username = id
        req.session.logged   = true
+       req.session.userType = "Admin"
+       req.session.isTotalAdmin  = data[0].isTotalAdmin
        resp.send("success");
      }else{
        resp.send("not authenticated")
@@ -45,8 +33,6 @@ router.get("/", (req,resp)=>{
 })
 
 module.exports = router;
-
-
 /*
   track:
   ,code:
