@@ -6,13 +6,11 @@ var logs = require("../../models/logs.js")
 // to remove error : Mongoose: mpromise (mongoose's default promise library) is deprecated
 mongoose.Promise = global.Promise;
 
-module.exports = router.get("/", (req,resp)=>{
-    resp.send("<h1>This is the log api</h1>")
-}).get("/:device/:rssi/:loc",(req,resp)=>{
+module.exports = router.get("/:device/:rssi/:gateway",(req,resp)=>{
   new logs({
      device:req.params.device
     ,rssi:req.params.rssi
-    ,loc:req.params.loc
+    ,gateway:req.params.gateway
   }).save((err,data)=>{
     if (err){
       resp.send("Error Saving Data")
