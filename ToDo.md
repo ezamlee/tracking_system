@@ -21,16 +21,16 @@
   2. Gateway
 
 ## Served Pages
-* beacons logging pages   | Status : Done
-* Admin logging Page      | Status : Done
-* Total Admin Tools       | Status : To Do
-* Track Admin Tools       | Status : To Do
-* lecturer Login page     | Status : To Do
-* lecturer Sessions view  | Status : To Do
-* lecturer Session view   | Status : To Do
-* lecturer course summary | Status : To Do
-* Device Registration     | Status : To Do
-* Provide Rich Dummy data to test the projects features | Status : To Do
+- [x] beacons logging pages   
+- [X] Admin logging Page      
+- [ ] Total Admin Tools      
+- [ ] Track Admin Tools      
+- [ ] lecturer Login page    
+- [ ] lecturer Sessions view
+- [ ] lecturer Session view  
+- [ ] lecturer course summary
+- [ ] Device Registration    
+- [ ] Provide Rich Dummy data to test the projects features
 
 ## We need to add proof of concept page | After finishing Main Functionality
 
