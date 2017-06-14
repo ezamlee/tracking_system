@@ -31,14 +31,18 @@ router.get("/", (req,resp)=>{
        req.session.username = id
        req.session.logged   = true
        req.session.userType = "Admin"
-       req.session.isTotalAdmin  = data[0].isTotalAdmin || true;
+       req.session.isTotalAdmin  = data[0].isTotalAdmin || false;
        resp.send("success");
      }else{
        resp.send("not authenticated")
      }
    })
 }).get("/dashboard",(req,resp)=>{
-  resp.render("admin/allAdmin.ejs",{title:"All Admin page"});
+  if (req.session.isTotalAdmin){
+    resp.render("admin/allAdmin.ejs",{title:"All Admin page"});
+  }else{
+    resp.render("admin/trackAdmin.ejs",{title:"Track Admin page"});
+  }
 })
 
 module.exports = router;

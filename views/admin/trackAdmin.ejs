@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <%include ../skel/header %>
+  <style media="screen">
+    .panel{
+      height: 550px;
+    }
+    .data-view{
+      height: 200px;
+      overflow: auto;
+    }
+    .fixed-control-height{
+      height: 220px;
+    }
+  </style>
+  </head>
+  <body style="padding:5px">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                ADD/DELETE Subject
+                <br/><small>this is section to add subjects to your managed track</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                  <div class="data-view col-lg-12">
+                    <table class="table subjectList">
+                      <tr>
+                        <td>System Admin I</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger btRemoveSubject" data-subject-name="system admin I">
+                            <span class="glyphicon glyphicon-remove">
+                          </button>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-lg-12 data-control">
+                    <div class="fixed-control-height">
+                      <div class="form-group">
+                        <label for="username">Add Subject</label>
+                        <input value="" type="text" id="subjectName" class="form-control" placeholder="subject name">
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-warnning" id="btAddSubject" name="button">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Subject session
+                <br/><small>This section is to add or remove subject session</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                  <div class="data-view col-lg-12">
+                    <table class="table" id="subjectsessionlist">
+                      <tr>
+                        <td>System Admin 1</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="label label-danger"
+                                data-subjectName="system admin I"
+                                data-session-date="12/11/2017"
+                                data-session-time-start="09:00"
+                                data-session-time-end="10:00" >SAT 12/11/2017 09:00 - 10:00</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-lg-12 data-control">
+                    <div class="fixed-control-height">
+                      <div class="form-group">
+                        <label for="avaliable-subjects">Select subject:</label>
+                        <select class="form-control" id="avaliable-subjects">
+                          <option>Object Oriented Programming</option>
+                          <option>System Admin I</option>
+                          <option>Database Fundementals</option>
+                          <option>Java SE</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="subjectDate">Date</label>
+                        <input type="date" id="subjectDate" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="startTime"> Start Time
+                          <input value="" type="time" id="startTime" class="form-control">
+                        </label>
+                        <label for="endTime"> End Time
+                          <input value="" type="time" id="endTime" class="form-control">
+                        </label>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-warnning btAddSession" name="button">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                Edit Subject lecturer
+                <br/><small>This is section to Add lecturers to Subjects</small>
+              </div>
+              <div class="panel-body">
+                <div class="data-view col-lg-12">
+                  <table class="table trackList">
+                    <tr>
+                      <td>Database Fundementals</td>
+                      <td>
+                        <span class="label label-primary">Ahmed  Essam</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-danger btRemovelecturer"
+                          data-lect-name="ahmed essam"
+                          data-sub-name="Database Fundementals">
+                            <span class="glyphicon glyphicon-remove">
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-lg-12 data-control">
+                  <div class="fixed-control-height">
+                    <div class="form-group">
+                      <label for="lec-avaliable-subjects">Select subject:</label>
+                      <select class="form-control" id="lec-avaliable-subjects">
+                        <option>Object Oriented Programming</option>
+                        <option>System Admin I</option>
+                        <option>Database Fundementals</option>
+                        <option>Java SE</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="lec-avaliable-lecturers">Select lecturer:</label>
+                      <select class="form-control" id="lec-avaliable-lecturers">
+                        <option>Ahmed Essam</option>
+                        <option>Aly Rafaat</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-warnning btAddTrack" name="button">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-success" style="height:200px">
+              <div class="panel-heading">
+                Edit My Passowrd
+                <br/><small>This is section to set your password</small>
+              </div>
+              <div class="panel-body">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="track">Change Password</label>
+                      <input value="" type="text" id="newPassword" class="form-control" placeholder="Enter New Password">
+                    </div>
+                  </div>
+                <div class="col-lg-12">
+                  <button type="button" class="btn btn-warnning btUpdatePassword" name="button">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <%include ../skel/scripts %>
+    <%include ../src/scripts/trackadmin %>
+  </body>
+</html>

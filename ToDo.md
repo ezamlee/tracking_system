@@ -23,8 +23,8 @@
 ## Served Pages
 - [x] beacons logging pages   
 - [x] Admin logging Page      
-- [ ] Total Admin Tools      
-- [ ] Track Admin Tools      
+- [x] Total Admin Tools      
+- [x] Track Admin Tools      
 - [ ] lecturer Login page    
 - [ ] lecturer Sessions view
 - [ ] lecturer Session view  
