@@ -20,8 +20,10 @@ app.use(cookieSession({
 
 app.use(express.static('public'));
 
-app.use("/log",require("./controllers/api/log.js"));
-app.use("/register",require("./controllers/register.js"));
+app.use("/api/log",require("./controllers/api/log.js"));
+app.use("/register/lecturer",require("./controllers/register.js"));
+app.use("/register/student",require("./controllers/register.js"));
 app.use("/admin",require("./controllers/admin/main.js"));
+
 
 app.use("/",require("./controllers/main.js"));
