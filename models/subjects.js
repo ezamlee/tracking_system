@@ -12,7 +12,7 @@ module.exports = mongoose.model('subjects', new mongoose.Schema({
   code     : "OPGen1",
   track    : "Open Source",
   sessions :  [{ sTime: ,eTime:  ,date:  ,room:   },
-               { sTime: ,eTime:  ,Date:  ,Room:   }
+               { sTime: ,eTime:  ,date:  ,Room:   }
               ]
 }
 */

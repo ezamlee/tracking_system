@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <%include ../skel/header %>
+  </head>
+  <body style="background-image:url('img/back2.jpg')">
+    <div >
+      <div class="container">
+        <div style="height:5vh">
+
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <div style="height:6vh">
+
+            </div>
+            <h1 style="color:white">Register Now: </h1>
+          </div>
+          <div class="col-lg-9 flex-last">
+            <div class="form-group row">
+              <label for="username" class="col-2 col-form-label" style="color:white">Full name</label>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="Enter your Full name here" id="fullname">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-2 col-form-label" style="color:white">Enter your email</label>
+              <div class="col-10">
+                <input class="form-control" type="email" name="email" id="email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phonenumber" class="col-2 col-form-label" style="color:white">Enter your Phone number</label>
+              <div class="col-10">
+                <input class="form-control" type="tel" id="phonenumber">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="track" class="col-2 col-form-label" style="color:white">Select your track</label>
+              <div class="col-10">
+                <select class="form-control" id="track">
+                  <option>Open Source</option>
+                  <option>System Admin</option>
+                  <option>Java</option>
+                  <option>Mobile</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <button type="submit" id="btsubmit" class="btn btn-primary">Register</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+
+          </div>
+          <div class="col-lg-3">
+            <h1 style="color:white" id="beconID"></h1>
+          </div>
+          <div class="col-lg-2">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%include ../skel/scripts %>
+  </body>
+</html>

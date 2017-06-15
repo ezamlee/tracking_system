@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <%include ../skel/header %>
+  </head>
+  <body style="background-image:url('img/back2.jpg')">
+    <div >
+      <div class="container">
+        <div style="height:5vh">
+
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <div style="height:6vh">
+
+            </div>
+            <h1 style="color:white">Login Now: </h1>
+          </div>
+          <div class="col-lg-9 flex-last">
+            <div class="form-group row">
+              <label for="username" class="col-2 col-form-label" style="color:white">Username</label>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="Enter your username here" id="username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="password" class="col-2 col-form-label" style="color:white">Password</label>
+              <div class="col-10">
+                <input class="form-control" type="password" id="password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <button type="submit" id="btsubmit" class="btn btn-primary">Login</button>
+            </div>
+          </div>
+        </div>
+        <div style="height:10vh">
+
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <div style="height:6vh">
+
+            </div>
+            <h1 style="color:white">Register Now: </h1>
+          </div>
+          <div class="col-lg-9 flex-last">
+            <div class="form-group row">
+              <label for="username" class="col-2 col-form-label" style="color:white">Full name</label>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="Enter your Full name here" id="username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="password" class="col-2 col-form-label" style="color:white">Password</label>
+              <div class="col-10">
+                <input class="form-control" type="password" id="password">
+              </div>
+              <label for="password" class="col-2 col-form-label" style="color:white">Confirm password</label>
+              <div class="col-10">
+                <input class="form-control" type="password" id="password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <button type="submit" id="btsubmit" class="btn btn-primary">Register</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%include ../skel/scripts %>
+    <%include ../src/scripts/admin-main.ejs %>
+  </body>
+</html>

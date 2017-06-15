@@ -4,7 +4,6 @@ var subjects = require("../models/subjects.js")
 var admins = require("../models/admins.js")
 
 router.use("/dashboard",(req,resp,next)=>{
-  console.log(req.session)
   if(
       req.session.username == undefined   ||
       req.session.logged   === false      ||
@@ -31,7 +30,7 @@ router.get("/", (req,resp)=>{
        req.session.username = id
        req.session.logged   = true
        req.session.userType = "Admin"
-       req.session.isTotalAdmin  = data[0].isTotalAdmin || false;
+       req.session.isTotalAdmin  = data[0].isTotalAdmin || true;
        resp.send("success");
      }else{
        resp.send("not authenticated")
