@@ -1,3 +1,131 @@
 <script type="text/javascript">
-  console.log("perfect")
+  function erase_content(){
+    $("#trackAdminList").html(" ")
+  }
+  function load_content(){
+    list_track_admins();
+  }
+  function load_track_list(){
+    track_list_arr = [];
+    $.ajax({
+      url:"http://"
+            +window.location.host
+            +"/admin/dashboard/list/tracks"
+      ,method:"get"
+      ,success:(resp)=>{
+        if(resp.status == "success"){
+          resp.data.forEach((it)=>{
+            track_list_arr.push(it.name);
+          })
+          return track_list_arr;
+        }
+      }
+      ,error:(err)=>{
+        notify(JSON.stringify(err))
+      }
+    })
+  }
+  function list_track_admins(){
+    $.ajax({
+      url:"http://"
+            +window.location.host
+            +"/admin/dashboard/totaladmin/trackadmin"
+      ,method:"get"
+      ,success:(data)=>{
+        var listAdmin = function(username,manage){
+          return `
+          <tr style="margin:5px">
+            <td>${username}</td>
+            <td>${manage}</td>
+            <td>
+              <button class="btn btn-sm btn-danger btRemoveTrackAdmin"  data-Track-Admin-Name="${username}" data-Track-Name="${manage}">
+                <span class="glyphicon glyphicon-remove" data-Track-Admin-Name="${username}" data-Track-Name="${manage}">
+              </button>
+            </td>
+          </tr><br>
+          `
+        }
+        if(data.status == "success"){
+          temFill = ""
+          data.data.forEach((it)=>{
+            temFill += listAdmin(it.username,it.manage[0])
+          })
+          $("#trackAdminList").html(temFill)
+        }else{
+          notify(JSON.stringify(data))
+        }
+      }
+      ,error:(err)=>{
+          notify(JSON.stringify(err))
+      }
+    })
+  }
+  function p1TrackList(list){
+    if(list != undefined){
+      html = ""
+      list.forEach((il)=>{
+        html+= `<option>${name}</option>`
+      })
+    }
+  }
+  $("#btAddTrackAdmin").click(()=>{
+    adname  = $("#TrackAdminUsername").val();
+    adpass  = $("#TrackAdminPass").val();
+    adtrack = $("#TrackAdminTracks").val();
+
+    $.ajax({
+      url:"http://"
+            +window.location.host
+            +"/admin/dashboard/totaladmin/trackadmin"
+      ,method:"put"
+      ,data:{
+        adname:adname,
+        adpass:adpass,
+        adtrack:adtrack
+      }
+      ,success:(data)=>{
+        if(data.status == "success"){
+          redraw();
+        }else{
+          notify(JSON.stringify(data))
+        }
+      }
+      ,error:(err)=>{
+          notify(JSON.stringify(err))
+      }
+    })
+
+  })
+  $("html").on('click','.btRemoveTrackAdmin' , (ev)=>{
+
+    adname  = ev.target.dataset.trackAdminName;
+    console.log(adname)
+    $.ajax({
+      url:"http://"
+            +window.location.host
+            +"/admin/dashboard/totaladmin/trackadmin"
+      ,method:"delete"
+      ,data:{
+        adname:adname
+      }
+      ,success:(data)=>{
+        if(data.status == "success"){
+          redraw();
+        }else{
+          notify(JSON.stringify(data))
+        }
+      }
+      ,error:(err)=>{
+          notify(JSON.stringify(err))
+      }
+    })
+
+  })
+  function redraw(){
+    erase_content();
+    load_content();
+  }
+
+  erase_content();
+  load_content();
 </script>

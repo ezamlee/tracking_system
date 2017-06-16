@@ -1,2 +1,23 @@
+  <div id="noti-con" class="" style="background-color: rgba(0,0,120,0.8);position:fixed;top:0;width:100%;z-index:100;display:none;justify-content:center;color:white">
+      <div class="row">
+        <div id="message" class="col-lg-12">
+
+        </div>
+        <div class="col-lg-12" dir="rtl">
+          <button type="button" class="btn btn-info" id="dismiss" name="button">Dismiss</button>
+        </div>
+      </div>
+
+  </div>
   <script src="/lib/js/jquery.js" type="text/javascript" charset="utf-8"></script>
   <script src="/lib/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  function notify(msg){
+
+    $("#message").html(`<h2>${msg}</h2>`)
+    $("#noti-con").css("display","flex");
+  }
+  $("#dismiss").click(()=>{
+    $("#noti-con").css("display","none");
+  })
+</script>
