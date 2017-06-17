@@ -47,7 +47,7 @@ router.get("/login", (req,resp)=>{
    id = req.body.u ;
    pass = req.body.p;
    admins.find({username:id,password:pass},{},(err,data)=>{
-     if(err){resp.send("server error")
+     if(err){resp.send("server error",JSON.stringify(err));
    }else if (
               data.length > 0 &&
               data[0].username === id &&
