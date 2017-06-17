@@ -3,7 +3,7 @@ var cookieSession = require("cookie-session")
 var app = express();
 var mongoose=require("mongoose")
 var bodyParser = require('body-parser')
-var server = app.listen(8090);
+var server = app.listen(process.env.PORT || 8090);
 
 mongoose.connect('mongodb://sam:se@attend-shard-00-00-9qmjb.mongodb.net:27017,attend-shard-00-01-9qmjb.mongodb.net:27017,attend-shard-00-02-9qmjb.mongodb.net:27017/attend?ssl=true&replicaSet=attend-shard-0&authSource=admin');
 
