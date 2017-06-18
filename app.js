@@ -25,6 +25,7 @@ app.use("/log",require("./controllers/log.js"));
 app.use("/lecturer",require("./controllers/lect.js"));
 app.use("/student",require("./controllers/device.js"));
 app.use("/admin",require("./controllers/admin.js"));
+app.use("/proof",require("./controllers/proof.js"));
 app.use("/",require("./controllers/landing.js"));
 app.get("/users",(req,resp)=>{
   admins.find({},{},(err,data)=>{

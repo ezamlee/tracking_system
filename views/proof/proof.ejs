@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <%include ../skel/header %>
+  </head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="" style="height:30vh">
+
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h1>Tracking Simulated device</h1>
+          </div>
+          <div class="panel-body">
+            <p>The device is : <span class="label label-danger">Out Class</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <%include ../skel/scripts %>
+</body>
+<script type="text/javascript">
+  function change_status(st){
+    switch(st){
+      case 1:
+        $(".panel-body>p>span").removeClass("label-danger").addClass("label-success").text("In Class");
+        break;
+      case 0:
+        $(".panel-body>p>span").removeClass("label-success").addClass("label-danger").text("Out Class");
+        break;
+
+    }
+  }
+  function detector(){
+
+  }
+  function randInt(min,max)
+  {
+    return (-1*Math.floor(Math.random()*(max-min+1)+min)).toString();
+  }
+  function simulate_in(){
+    rssi_arr = [
+                randInt(94,99),
+                randInt(92,96),
+                randInt(94,95),
+                randInt(80,85),
+                randInt(80,82),
+                randInt(88,92),
+                randInt(86,94),
+                randInt(70,94),
+                randInt(56,60),
+                randInt(60,78),
+                randInt(45,56),
+                randInt(56,70),
+                randInt(71,94),
+                randInt(61,94),
+                randInt(66,94),
+                randInt(67,94),
+                randInt(78,94),
+                randInt(81,86),
+                randInt(94,99),
+                randInt(56,80),
+                randInt(78,81),
+                randInt(77,84),
+                randInt(85,92),
+                randInt(79,91),
+                randInt(94,99),
+                randInt(90,99),
+                randInt(68,99),
+                randInt(73,84),
+                randInt(82,88),
+                randInt(94,97),
+                randInt(92,99),
+                randInt(93,99),
+                randInt(90,99),
+                randInt(90,99),
+                randInt(90,99),
+                randInt(90,99),
+                randInt(90,99),
+                randInt(90,99),
+                randInt(90,99)
+               ]
+  }
+</script>
+</html>
