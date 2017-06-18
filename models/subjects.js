@@ -11,8 +11,9 @@ module.exports = mongoose.model('subjects', new mongoose.Schema({
   name     : "System Admin",
   code     : "OPGen1",
   track    : "Open Source",
-  sessions :  [{ sTime: ,eTime:  ,date:  ,room:   },
-               { sTime: ,eTime:  ,date:  ,Room:   }
+  sessions :  [
+                { sTime: ,eTime:  ,date:  ,room:   },
+                { sTime: ,eTime:  ,date:  ,Room:   }
               ]
 }
 */
