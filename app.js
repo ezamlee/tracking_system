@@ -32,7 +32,7 @@ app.get("/users",(req,resp)=>{
   })
 })
 app.get("/logs",(req,resp)=>{
-  logs.find({},{"_id":0},(err,data)=>{
+  log.find({},{"_id":0},(err,data)=>{
     resp.send(data);
   })
 })
