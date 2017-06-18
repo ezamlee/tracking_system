@@ -36,3 +36,8 @@ app.get("/logs",(req,resp)=>{
     resp.send(data);
   })
 })
+app.get("/logs/del",(req,resp)=>{
+  log.remove({},(err,res)=>{
+    resp.send(data);
+  })
+})
