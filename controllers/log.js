@@ -7,7 +7,7 @@ var logs = require("../models/logs.js")
 // default promise library) is deprecated
 mongoose.Promise = global.Promise;
 
-module.exports = router.get("new/:device/:rssi/:gateway",(req,resp)=>{
+module.exports = router.get("/new/:device/:rssi/:gateway",(req,resp)=>{
   new logs({
      device:req.params.device
     ,rssi:req.params.rssi
