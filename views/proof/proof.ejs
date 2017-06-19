@@ -1,89 +1,217 @@
 <!DOCTYPE html>
 <html>
-  <%include ../skel/header %>
+<%include ../skel/header %>
   </head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="" style="height:30vh">
 
-        </div>
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <h1>Tracking Simulated device</h1>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="" style="height:12vh">
+
           </div>
-          <div class="panel-body">
-            <p>The device is : <span class="label label-danger">Out Class</span></p>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h1>Tracking Simulated device</h1>
+            </div>
+            <div class="panel-body">
+              <p>The device is : <span class="label label-danger">Out Class</span></p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="" style="height:5vh">
+
+          </div>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h1>Simulator Control</h1>
+            </div>
+            <div class="panel-body">
+              <button type="button" class='btn btn-success' name="button">Simulate In</button>
+              <button type="button" class='btn btn-danger' name="button">Simulate Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <%include ../skel/scripts %>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(()=>{
+      $.ajax({
+        url:"http://"+window.location.host+"/logs/del",
+        method:"get"
+      })
+      var publicInterval;
+      var publicIndex = 0;
+      var rssi_arr;
 
-  </div>
-  <%include ../skel/scripts %>
-</body>
-<script type="text/javascript">
-  function change_status(st){
-    switch(st){
-      case 1:
-        $(".panel-body>p>span").removeClass("label-danger").addClass("label-success").text("In Class");
-        break;
-      case 0:
-        $(".panel-body>p>span").removeClass("label-success").addClass("label-danger").text("Out Class");
-        break;
+      function change_status(st) {
+        switch (st) {
+          case 1:
+            $(".panel-body>p>span").removeClass("label-danger").addClass("label-success").text("In Class");
+            break;
+          case 0:
+            $(".panel-body>p>span").removeClass("label-success").addClass("label-danger").text("Out Class");
+            break;
 
-    }
-  }
-  function detector(){
+        }
+      }
+      var d;
 
-  }
-  function randInt(min,max)
-  {
-    return (-1*Math.floor(Math.random()*(max-min+1)+min)).toString();
-  }
-  function simulate_in(){
-    rssi_arr = [
-                randInt(94,99),
-                randInt(92,96),
-                randInt(94,95),
-                randInt(80,85),
-                randInt(80,82),
-                randInt(88,92),
-                randInt(86,94),
-                randInt(70,94),
-                randInt(56,60),
-                randInt(60,78),
-                randInt(45,56),
-                randInt(56,70),
-                randInt(71,94),
-                randInt(61,94),
-                randInt(66,94),
-                randInt(67,94),
-                randInt(78,94),
-                randInt(81,86),
-                randInt(94,99),
-                randInt(56,80),
-                randInt(78,81),
-                randInt(77,84),
-                randInt(85,92),
-                randInt(79,91),
-                randInt(94,99),
-                randInt(90,99),
-                randInt(68,99),
-                randInt(73,84),
-                randInt(82,88),
-                randInt(94,97),
-                randInt(92,99),
-                randInt(93,99),
-                randInt(90,99),
-                randInt(90,99),
-                randInt(90,99),
-                randInt(90,99),
-                randInt(90,99),
-                randInt(90,99),
-                randInt(90,99)
-               ]
-  }
-</script>
+      setInterval(() => {
+        //console.log("running")
+        $.ajax({
+          url: "http://" + window.location.host + "/logs",
+          method: "get",
+          success: (data) => {
+            test_time = data[0]
+            nowDate = new Date()
+            verified_time = data.forEach((i) => {
+              if (new Date(i.time).getHours() == nowDate.getHours() &&
+                new Date(i.time).getMonth() == nowDate.getMonth() &&
+                new Date(i.time).getYear() == nowDate.getYear() &&
+                new Date(i.time).getDay() == nowDate.getDay() &&
+                Math.abs(nowDate.getMinutes() - new Date(i.time).getMinutes()) < 1
+              ) {
+                change_status(1);
+                return 0;
+              } else {
+                change_status(0)
+              }
+            })
+          }
+        })
+      }, 1000)
+
+      function randInt(min, max) {
+        return (-1 * Math.floor(Math.random() * (max - min + 1) + min)).toString();
+      }
+
+      function simulate_in() {
+        rssi_arr = [
+          randInt(94, 99),
+          randInt(92, 96),
+          randInt(94, 95),
+          randInt(80, 85),
+          randInt(80, 82),
+          randInt(88, 92),
+          randInt(86, 94),
+          randInt(70, 94),
+          randInt(56, 60),
+          randInt(60, 78),
+          randInt(45, 56),
+          randInt(56, 70),
+          randInt(71, 94),
+          randInt(61, 94),
+          randInt(66, 94),
+          randInt(67, 94),
+          randInt(78, 94),
+          randInt(81, 86),
+          randInt(94, 99),
+          randInt(56, 80),
+          randInt(78, 81),
+          randInt(77, 84),
+          randInt(85, 92),
+          randInt(79, 91),
+          randInt(94, 99),
+          randInt(90, 99),
+          randInt(68, 99),
+          randInt(73, 84),
+          randInt(82, 88),
+          randInt(94, 97),
+          randInt(92, 99),
+          randInt(93, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99)
+        ]
+        publicIndex = 0
+        clearInterval(publicInterval);
+        publicInterval = setInterval(() => {
+          //console.log("in")
+          publicIndex++
+          if (publicIndex > rssi_arr.length) publicIndex -= 2;
+          $.ajax({
+            url: "http://" + window.location.host + `/log/1/${rssi_arr[publicIndex]}/1`,
+            method: "get",
+            success: (data) => {},
+            error: (err) => {}
+          })
+        }, 1000);
+      }
+
+      function simulate_out() {
+        rssi_arr = [
+          randInt(94, 99),
+          randInt(92, 96),
+          randInt(94, 95),
+          randInt(80, 85),
+          randInt(80, 82),
+          randInt(88, 92),
+          randInt(86, 94),
+          randInt(70, 94),
+          randInt(56, 60),
+          randInt(60, 78),
+          randInt(45, 56),
+          randInt(56, 70),
+          randInt(71, 94),
+          randInt(61, 94),
+          randInt(66, 94),
+          randInt(67, 94),
+          randInt(78, 94),
+          randInt(81, 86),
+          randInt(94, 99),
+          randInt(56, 80),
+          randInt(78, 81),
+          randInt(77, 84),
+          randInt(85, 92),
+          randInt(79, 91),
+          randInt(94, 99),
+          randInt(90, 99),
+          randInt(68, 99),
+          randInt(73, 84),
+          randInt(82, 88),
+          randInt(94, 97),
+          randInt(92, 99),
+          randInt(93, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99),
+          randInt(90, 99)
+        ]
+        clearInterval(publicInterval);
+        publicIndex=0;
+        publicInterval = setInterval(() => {
+          //console.log("out")
+          publicIndex++;
+          if (publicIndex >= rssi_arr.length) clearInterval(publicInterval)
+          $.ajax({
+            url: "http://" + window.location.host + `/log/1/${rssi_arr[publicIndex]}/1`,
+            method: "get",
+            success: (data) => {},
+            error: (err) => {}
+          })
+        }, 100)
+      }
+      $(".btn-success").click(()=>{
+        simulate_in();
+      })
+      $(".btn-danger").click(()=>{
+        simulate_out();
+      })
+    })
+  </script>
+
 </html>
